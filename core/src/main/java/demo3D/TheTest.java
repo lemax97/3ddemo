@@ -1,6 +1,5 @@
 package demo3D;
 
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -13,7 +12,7 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Vector3;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
-public class TheTest implements ApplicationListener {
+public class TheTest extends BaseGame {
 	public Environment environment;
 	public PerspectiveCamera perspectiveCamera;
 	public ModelBatch modelBatch;
@@ -22,6 +21,7 @@ public class TheTest implements ApplicationListener {
 
 	@Override
 	public void create() {
+		setScreen(new DemoScreen(this));
 		environment = new Environment();
 		environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 1f, 0f, 0.1f, 1));
 
@@ -48,6 +48,8 @@ public class TheTest implements ApplicationListener {
 
 		Model boxModel = modelBuilder.createBox(5, 5, 5, boxMaterial, usageCode);
 		boxInstance = new ModelInstance(boxModel);
+
+
 
 	}
 
